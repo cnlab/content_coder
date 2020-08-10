@@ -18,11 +18,11 @@ Copyright (c) 2020 Communication Neuroscience Lab
 
 ![](doc/img/home1.png)
 
-* Configurable content survey and items using ![survey.js](https://surveyjs.io/Overview/Library)
+* Configurable content survey and items using [survey.js](https://surveyjs.io/Overview/Library)
 
-![](doc/img/coder1.png)
+![](doc/img/coding1.png)
 
-![](doc/img/coder2.png)
+![](doc/img/coding2.png)
 
 * Admin functions to track coding and export data
 
