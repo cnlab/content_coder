@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+    <head>
+        <meta content="text/html; charset=utf-8" http-equiv="content-type">
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"
+             />
+        
+        <style>
+            
+            .card-columns {
+               column-count: 4;
+            }
+        </style>
+    </head>
+    
+    <body>
+    
+        
+        
+    	<div class="container">
+            
+              <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+              <a class="navbar-brand" href="#"><h2>Megameta Content Analysis Coder</h2></a>
+              
+              <ul class="navbar-nav ml-auto">
+                  {% if user.role == "admin" %}
+                  <li><a class="nav-item nav-link " href="/admin">Admin</a></li>
+                  {% endif %}
+                  <li><a class="nav-item nav-link active" href="/">My home</a></li>
+                  <li><a class="nav-item nav-link " href="/logout">Logout</a></li>
+              </ul>
+          </nav>
+            
+            
+            <div class="alert alert-primary" role="alert">
+                <h3>Hi {{ user.username }}!</h3>
+                 <div>You have coded {{ coded_cnt }} stimuli</div>
+            </div>
+            
+
+           
+            <div class="alert alert-secondary" role="alert"><h4>Actions</h4>
+            
+              <a href="{{ random_sample_url }}" class="btn btn-primary btn-sm active" 
+               role="button" >Code random 5 stims</a>
+            </div>
+            <br/>
+            <div>
+                <h4>Coded stims</h4>
+            
+             <div id="accordion"> 
+                
+                {% for project, ids in coded_stims.items() %}
+                    <div class="card">
+                        <div class="card-header" id="mheading{{ project }}">
+                          <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" 
+                                    data-target="#mcollapse{{ project }}" 
+                                    aria-expanded="true" aria-controls="mcollapse{{ project }}">
+                              {{ project }} ({{ ids|length }})
+                            </button>
+                          </h5>
+                        </div>
+                   
+                    <div id="mcollapse{{ project }}" class="collapse" 
+                         aria-labelledby="mheading{{ project }}" 
+                         data-parent="#accordion">
+                      <div class="card-body">
+                       <ul class="list-unstyled card-columns">
+                           {% for id in ids %}
+                            <li><a href="/codestim/{{ id }}">{{ id}}</a></li>
+                           {% endfor %}
+                        </ul>
+                      </div>
+                     </div>
+                 </div>
+                {% endfor %}
+                
+                   
+                    
+                </div>
+            
+            </div>
+          
+            <br/>
+            <div>
+                <h4>Still to code</h4>
+                
+               <div id="accordion2"> 
+                
+                {% for project, ids in to_code.items() %}
+                <div class="card">
+                    <div class="card-header" id="heading{{ project }}">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link" 
+                                data-toggle="collapse" 
+                                data-target="#collapse{{ project }}" 
+                                aria-expanded="true" aria-controls="collapse{{ project }}">
+                          {{ project }} ({{ ids|length }})
+                        </button>
+                      </h5>
+                    </div>
+                   
+                    <div id="collapse{{ project }}" class="collapse" 
+                         aria-labelledby="heading{{ project }}" 
+                         data-parent="#accordion2">
+                      <div class="card-body">
+                       <ul class="list-unstyled card-columns">
+                           {% for id in ids %}
+                            <li><a href="/codestim/{{ id }}">{{ id}}</a></li>
+                           {% endfor %}
+                        </ul>
+                       </div>
+                    </div>
+                </div>
+                {% endfor %}
+                
+                   
+                
+            </div>
+            
+        </div>
+            
+            <br/>
+            <br/>
+        
+        
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+        
+    </body>
+    
+</html>

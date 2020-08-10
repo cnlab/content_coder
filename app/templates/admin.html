@@ -1,0 +1,181 @@
+<!doctype html>
+<html>
+    <head>
+        <meta content="text/html; charset=utf-8" http-equiv="content-type">
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"
+             />
+        
+        <style>
+            
+        
+        </style>
+    </head>
+    
+    <body>
+    
+        
+        
+    	<div class="container">
+            
+              <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+              <a class="navbar-brand" href="#"><h2>Megameta Content Analysis Coder</h2></a>
+              
+              <ul class="navbar-nav ml-auto">
+                  {% if user.role == "admin" %}
+                  <li><a class="nav-item nav-link active " href="admin">Admin</a></li>
+                  {% endif %}
+                  <li><a class="nav-item nav-link" href="/">My home</a></li>
+                  <li><a class="nav-item nav-link " href="logout">Logout</a></li>
+              </ul>
+          </nav>
+            
+            
+           <div class="alert alert-primary" role="alert">
+                <h3>Hi {{ user.username }}!</h3>
+            </div>
+            
+            
+             <div class="card">
+                <div class="card-header">
+            
+            <h4>These are the registered users</h4>
+                 </div>
+                 <div class="card-body">
+            <div class="table-responsive-md">
+                <table class="table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Username</th>
+                            <th>Role</th>
+                            <th>Email</th>
+                            <th>Stims coded</th>
+                            <th>Download codes</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        {% for u in users %}
+                        <tr>
+                            <td>{{ u[0] }}</td>
+                            <td>{{ u[1] }}</td>
+                            <td>{{ u[2] }}</td>
+                            <td>{{ user_coded_cnt[u[0]] }}</td>
+                            <td>
+                                {% if user_coded_cnt[u[0]] > 0 %}
+                                <input class="download" name="download" type="checkbox" value="{{ u[0] }}" />
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+                 </div></div>
+            
+            
+            <br/>
+            <br/>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h4>Download codes</h4>
+                </div>
+                <div class="card-body">
+                    <p>Select one or more users above</p>
+                    
+                     <div class="form-group row">
+                      <label for="download-filename" class="col-sm-2 col-form-label">Filename</label>
+                    
+                    <input type="text" id="download-filename" placeholder="log.csv"/>
+                    </div>
+                     <button id="download-codes" class="btn-info btn" 
+                           role="button" >Download</button>
+                </div>
+            </div>
+            
+            <br/>
+            <br/>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h4>Add a new user</h4>
+                  </div>
+                 <div class="card-body">
+               
+                
+                <form action="create_user" method="post" name="create_user">
+                    
+                  <div class="form-group row">
+                      <label for="username" class="col-sm-2 col-form-label">Username</label>
+                      <input placeholder="Username" type="text" name="username" />
+                  </div>
+                    
+                   <div class="form-group row">
+                      <label for="email" class="col-sm-2 col-form-label">Email</label>
+                      <input placeholder="Email" type="text" name="email" />
+                  </div>  
+                    
+                  <div class="form-group row">
+                      <label for="role" class="col-sm-2 col-form-label">Role</label>
+
+                      <select placeholder="Username" type="select" name="role">
+                          <option value="user">User</option>
+                          <option value="admin">Admin</option>
+                      </select>
+                  </div>
+                  <div class="form-group row">
+                      <label for="password" class="col-sm-2 col-form-label">Password</label>
+                      <input placeholder="Password" type="password" name="password" /> 
+                  </div>
+                    
+                  <button class="btn-info btn" type="submit">Create user</button>    
+                </form>
+                </div>
+            </div>
+           
+            
+        </div>
+        
+
+        
+        
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+        
+        
+            <script>
+            
+            $("#download-codes").on( "click", function() {
+
+              var selected_users =   $("input.download:checked").map(function() {
+                    return this.value;
+                }).get();
+
+                if (selected_users.length==0) return false;
+                
+                var csv_filename = $('#download-filename').val();
+                
+                csv_filename = csv_filename=='' ? 'log.csv' : csv_filename;
+                
+                var download_url = '/get_codes_for/'+ selected_users.join('|') + '?filename=' + csv_filename;
+
+                window.open(download_url,'download_codes');
+
+            })
+                
+                
+        </script>
+        
+        
+    </body>
+    
+</html>

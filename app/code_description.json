@@ -1,0 +1,341 @@
+[
+    {
+    "variable": "modality",
+    "title": "MODALITY",
+    "values": [
+        {
+            "val": "Text",
+            "desc": "Message contains written text."
+        },
+        {
+            "val": "Audio",
+            "desc": "Message contains audio (e.g. music or voice)"
+        },
+        {
+            "val": "Video",
+            "desc": "Message contains video."
+        },
+        {
+            "val": "Static Image",
+            "desc": "Message contains static image(s)."
+        },
+        {
+            "val": "Animation",
+            "desc": "Message contains an animation, i.e. a set of images presented like a slideshow. NOTE: If the message is also presented as text like for P1 Banners, also choose the Text category."
+        },
+        {
+            "val": "Other, please describe",
+            "desc": "For instance: Message is recalled or imagined rather than shown."
+        }
+    ]
+    },
+    {
+        "variable": "imagery_type",
+        "title": "IMAGERY TYPE",
+        "values": [
+            {
+                "val": "Cartoon",
+                "desc": "Does the image/video contain a drawing, cartoon or otherwise unrealistic image?"
+            },
+            {
+                "val": "Realistic",
+                "desc": "Does the image/video contain a realistic/photographic/videographic image?"
+            }
+        ]
+    },
+    {
+        "variable": "main_behavioral_domain",
+        "title": "MAIN BEHAVIORAL DOMAIN",
+        "values":[
+            {
+                "val": "Health",
+                "desc": "The message is about a health domain."
+            },
+            {
+                "val": "Marketing",
+                "desc": "The message is about marketing domain."
+            },
+            {
+            	"val": "Other",
+            	"desc": "Please describe"
+            }
+        ]
+    },
+    {
+        "variable": "health_domain",
+        "title": "HEALTH DOMAIN",
+        "values":[
+            {
+                "val": "Smoking",
+                "desc": "A main topic of the message concerns smokers or smoking."
+            },
+            {
+                "val": "Physical Activity",
+                "desc": "A main topic of the message concerns physical activity."
+            },
+            {
+                "val": "Alcohol",
+                "desc": "A main topic of the message concerns alcohol or alcohol consumption."
+            },
+            {
+            	"val": "Other",
+            	"desc": "Please describe"
+            }
+        ]
+    },
+    {
+        "variable": "non_health_domain",
+        "title": "NON-HEALTH DOMAIN",
+        "values": [
+            {
+                "val": "Donation",
+                "desc": "A main topic of the message concerns donations or charitable causes."
+            },
+            {
+                "val": "Product",
+                "desc": "A main topic of the message concerns purchases or commercial products."
+            },
+            {
+            	"val": "Other",
+            	"desc": "Please describe"
+            }
+        ]
+    },
+    {
+        "variable": "persuasive_intent",
+        "title": "PERSUASIVE INTENT",
+        "values": [
+            {
+                "val": "Clearly/explicitly persuasive",
+                "desc": "The message makes a clear, explicit recommendation regarding how to behave, think, or feel. That is, the message explicitly tells the reader to do something (“Call the quit-line now.”). Look for words such as “you should”, “do X”, “people need to…”"
+            },
+            {
+                "val": "Implicitly persuasive",
+                "desc": "The message does not make explicit recommendations but a best practice or way of thinking is implied. Example1: a newspaper article talks about positive experiences with running, but doesn’t explicitly tell readers to run. Example2: a message talks about what others like or want, but doesn’t explicitly tell the reader what to do (e.g. others like this app or article), i.e. social influence  Example3: a message exclusively talks about positive outcomes of a behavior, but does not explicitly tell the reader to do it. Example4: A message talks about how a particular behavior is easy to do AND doesn’t imply it’s a negative thing"
+			},
+            {
+                "val": "Descriptive",
+                "desc": "The message makes no explicit or implicit recommendations. Example 1: A newspaper article talks about the introduction of a new law about snack food in public schools [i.e. focus is on a policy that isn’t directly relevant to participant’s behavior] Example 2: A message is two-sided, i.e. gives both positive and negative outcomes of a behavior or gives examples of positive outcomes but also expresses uncertainty about the evidence suggesting that these positive outcomes will occur."
+			}
+        ]
+    },
+    {
+    	"variable": "receiver",
+    	"title": "RECEIVER",
+    	"values": [
+    		{
+    			"val": "Directly addressed",
+    			"desc": "The message directly addresses the receiver (most likely using ‘you’; e.g. if you keep smoking, you will...this is )."
+    		},
+    		{
+    			"val": "Not directly addressed",
+    			"desc": "The message does not directly address the receiver"
+    		}
+    	]
+    },
+    {
+        "variable": "outcomes1",
+        "title": "OUTCOMES",
+        "values": [
+            {
+                "val": "Yes",
+                "desc": "The message mentions or shows outcomes of a behavior or way of thinking."
+            },
+            {
+                "val": "No",
+                "desc": "The message does not mention or show outcomes of a behavior or way of thinking."
+            }
+        ]
+    },
+    {
+        "variable": "outcome_description",
+        "title": "OUTCOME DESCRIPTION",
+        "values": [
+            {
+                "val": "Explicit",
+                "desc": "The outcome of following a recommendation or completing a given behavior is clearly and explicitly described in the message. NOTE: When in doubt- choose implicit."
+            },
+            {
+                "val": "Implicit",
+                "desc": "The outcome of following a recommendation or completing a given behavior is not clearly stated or implicitly implied in the message. Example: photo of a woman smiling with the phrase 'Stop smoking. Start living'"
+
+            }
+        ]
+    },
+    {
+        "variable": "gain_loss",
+        "title": "GAIN or LOSS Framing",
+        "values": [
+            {
+                "val": "Gain",
+                "desc": "Message describes positive/desirable outcomes that can be gained by following a recommendation or by completing a given behavior (even if it is not explicitly recommended) Note: “Desirable outcomes” can be good things that will be gained OR bad things that can be avoided."
+			},
+            {
+                "val": "Loss",
+                "desc": "Message describes negative outcomes that would be suffered by not following a recommendation or by completing a given behavior (even if it is not explicitly recommended) Note: “Negative outcomes” can be negative things that will be suffered OR good things that one will miss out on."
+			},
+            {
+                "val": "Loss: Suffer negative outcomes",
+                "desc": "Message describes negative/undesirable outcomes that would be suffered by not following a recommendation or by completing a given behavior (even if it is not explicitly recommended) OR Message describes positive outcomes that would be lost by not following a recommendation or completing a given behavior (even if it is not explicitly recommended). Example: a photo of suffering man lying in a hospital bed with the phrase “Stop smoking. Start living”. Focus on the most prominent outcome if the message describes multiple outcomes whose valences are mixed."
+            },
+            {
+                "val": "Unclear OR Both",
+                "desc": "Message describes a recommendation or behavior but the desirability of outcomes is indeterminate. Also choose this option if a mix of gain and loss-framed statements is included in the message." 
+            }
+        ]
+    },
+    {
+    	"variable": "gain_cats",
+    	"title": "GAIN FRAME CATEGORIES",
+    	"values": [
+    		{
+    			"val": "gain positive outcomes",
+    			"desc": "Message describes positive/desirable outcomes that can be gained by following a recommendation or by completing a given behavior (even if it is not explicitly recommended)"		
+    		},
+    		{
+    			"val": "avoid negative outcomes",
+    			"desc": "Message describes negative/undesirable outcomes that can be avoided by following a recommendation or by completing a given behavior (even if it is not explicitly recommended)" 
+    		},
+    		{
+    			"val": "Unclear OR Both",
+    			"desc": "The desirability of outcomes is unclear or a mix of positive and negative outcomes is mentioned." 		
+    		}
+    	]
+    },
+    {
+    	"variable": "loss_cats",
+    	"title": "LOSS FRAME CATEGORIES",
+    	"values": [
+    		{
+    			"val": "suffer negative outcomes",
+    			"desc": "Message describes negative outcomes that would be suffered by not following a recommendation or by completing a given behavior (even if it is not explicitly recommended) Example: a photo of suffering man lying in a hospital bed with the phrase “Stop smoking. Start living"	
+    		},
+    		{
+    			"val": "lose positive outcomes",
+    			"desc": "Message describes positive outcomes that would be lost by not following a recommendation or completing a given behavior (even if it is not explicitly recommended)"		
+    		},
+    		{
+    			"val": "Unclear OR Both",
+    			"desc": "The desirability of outcomes is unclear or a mix of positive and negative outcomes is mentioned."
+    		}
+    	]
+    },
+    {
+        "variable": "timing",
+        "title": "TIME ORIENTATION",
+        "values": [
+            {
+                "val": "Long-Term",
+                "desc": "Described outcomes will occur in the long term. I.e.:The message mentions outcomes of a recommended behavior or directs readers’ thoughts towards events that lie FAR in the future. Often the exact time the outcome will occur is very abstract or vague. Example 1: If you engage in regular physical activity today you can live longer.  Example 2: If you quit smoking, you can avoid lung cancer."
+            },
+            {
+                "val": "Short-Term",
+                "desc": "Described outcomes will occur in the short term. I.e.: The message mentions outcomes of a recommended behavior or directs readers’ thoughts towards events that occur immediately or soon after implementation of the behavior. Example 1: Being physically active makes you feel refreshed and ready for the day. Example 2: Imagine what you could do today if you had more energy."
+			},
+            {
+                "val": "Mixed OR Both",
+                "desc": "Both short- and long-term outcomes are mentioned or the timing of outcomes is unclear."
+            }
+        ]
+    },
+    {
+        "variable": "appeal_type",
+        "title": "APPEAL TYPE",
+        "values": [
+            {
+                "val": "Physical Outcomes",
+                "desc": "Outcomes mentioned in the message concern physical effects of a following a recommendation or way of thinking. Example 1: People at your level of inactivity often have high blood sugar. High blood sugar levels can hurt your arteries."
+            },
+            {
+                "val": "Mental Outcomes",
+                "desc": "Outcomes mentioned in the message concern NONSOCIAL mental effects of following a recommendation or way of thinking (e.g. changes in stress-levels or an emotional state) Example 1: Exercise can help you deal with stress. Being active can give you a mental break from what's troubling you, take a step back and make time for yourself. Example 2: You can feel proud when you reach your goals. Being active feels good, gives you more energy, and makes you feel better about yourself.)"
+                
+            },
+            {
+                "val": "Social Outcomes",
+                "desc": "The message appeals to how a recommended behavior or way of thinking strengthens or weakens the social connection between self and others.Example 1: If you find something you like, exercise can be fun. Being active can help you connect with other people in fun, social settings - like a class, a team, or with friends.Example 2: Before you were wasted, you weren’t known as “the creep”. Example 3: 'But I was drunk' doesn’t repair the friendship."         
+            },
+            {
+                "val": "Other OR Mixed ",
+                "desc": "The message mentions outcomes that do not fit into the above categories or mentions multiple outcomes that fit into multiple of the above categories. Example 1: half of all violent crimes are alcohol-related. Cheers. Example 2: the more you binge drink, the more likely you are to be arrested Example 1: half of all violent crimes are alcohol-related. Cheers. Example 2: the more you binge drink, the more likely you are to be arrested. OR Outcomes mentioned in the message are unclear and ambiguous to categorize Example:  photo of a woman smiling with the phrase “Stop smoking. Start living"
+            }
+        ]
+    },
+    {
+        "variable": "social_content",
+        "title": "SOCIAL CONTENT",
+        "values": [
+            {
+                "val": "Explicitly/clearly social",
+                "desc": "The message explicitly discusses or shows social content, meaning that it: Shows or talks about multiple people AND At least 2 of these individuals interact (e.g. hugging, fighting, talking, one looking at the other disapprovingly). OR The message discusses other people IN RELATION TO the receiver of the message (e.g. your family wants you to live, your loved ones don’t like that you do X, your behavior harms others)."
+            },
+            {
+                "val": "Implicitly/somewhat social",
+                "desc": "The message displays or describes a social context, but doesn’t describe interactions between people. Example 1: An image shows a group of people, but no one is interacting.  Example 2: A message describes a descriptive social norm (e.g. X% of people do X)"},
+            {
+                "val": "Not at all social",
+                "desc": "The content is neither explicitly nor implicitly social (i.e. neither of the above apply) Note: Most study results should be coded as not social (e.g. researchers found X, or in a study, people who drank coffee were….)."
+			}
+        ]
+    },
+    {
+    	"variable": "social_relevance",
+    	"title": "SOCIAL RELEVANCE",	
+    	"values": [
+    		{
+    			"val": "Relevant",
+    			"desc": "Some or all of the social information given in the message is relevant to the main goal of the message. (e.g. if the message is an anti-smoking PSA, the social content is relevant to smoking). Note: Assume that the main goal of a newspaper article is to communicate information about the main topic of the article. E.g. if an article is about healthy recipes and two people are talking to each other about cooking, that would be a relevant interaction."
+    		},
+    		{
+    			"val": "Irrelevant",
+    			"desc": "None of the social information given in the message is relevant to the main goal of the message Note: assume that the main goal of a movie trailer is to get people to go to the movies. Most interactions between movie characters will not be directly relevant to that."
+    		}
+    	]
+    },
+    {
+        "variable": "narrative1",
+        "title": "NARRATIVE CONTENT",
+        "values": [
+            {
+                "val": "Narrative",
+                "desc": "The message includes a narrative (i.e. at least one event happening to one concrete character). 'John (62), who smoked for 30 years, died of lung cancer.' IS a narrative, bc 'John (62)' is a concrete character for whom an event (dying of lung cancer) is described."
+            },
+            {
+                "val": "No narrative",
+                "desc": "The message does not include a narrative (i.e. no characters and related events are mentioned). E.g. 'Smokers can die of lung cancer.' is NOT a narrative bc 'smokers' is not a concrete character. 'You can die of lung cancer if you keep smoking.' is NOT a narrative, bc outcomes for the message receiver themselves are described, not a character."
+            }
+        ]
+    },
+    {
+        "variable": "testimonial",
+        "title": "TESTIMONIAL",
+        "values": [
+            {
+                "val": "Testimonial",
+                "desc": "The narrative describes a real person."
+            },
+            {
+                "val": "No testimonial",
+                "desc": "The narrative describes a fictional person or character."
+            }
+        ]
+    },
+    {
+        "variable": "norms1",
+        "title": "NORMS",
+        "values": [
+            {
+                "val": "Descriptive norm",
+                "desc": "The message describes or shows how a specific group of others behaves. E.g. Most people like you engage in X-amount of physical activity per week. 86% of students do not binge drink."
+            },
+            {
+                "val": "Injunctive norm",
+                "desc": "The message describes or shows what behaviors or attitudes others approve of. E.g. most people like you think smoking is uncool."
+            },
+            {
+                "val": "N/A",
+                "desc": "No mention is made of the behaviors or attitudes others engage in or approve of. Note: Articles about study results which mention that people who engage or do not engage in a behavior were studied are not interpreted as social norms when they are two-sided (e.g. we studied coffee drinkers and non-coffee drinkers...) or when they are NOT explicit about one group being in the majority or minority."
+            }
+        ]
+    }
+]

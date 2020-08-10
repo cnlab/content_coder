@@ -1,0 +1,569 @@
+{
+    "pages": [
+        {
+            "name": "Modality1",
+            "elements": [
+                {
+                    "type": "checkbox",
+                    "name": "modality",
+                    "title": "MODALITY ",
+                    "isRequired": true,
+                    "hasOther": true,
+                    "choices": [
+                        {
+                            "value": "text",
+                            "text": "Text"
+                        },
+                        {
+                            "value": "audio",
+                            "text": "Audio "
+                        },
+                        {
+                            "value": "video",
+                            "text": "Video"
+                        },
+                        {
+                            "value": "static_image",
+                            "text": "Static Image"
+                        },
+                        {
+                            "value": "animation",
+                            "text": "Animation"
+                        }
+                    ],
+                    "otherText": "Other (please describe)",
+                    "popupdescription": "<table><thead><th>Value</th><th>Description</th></thead><tbody><tr><td>Text</td><td>Message contains written text.</td></tr><tr><td>Audio</td><td>Message contains audio (e.g. music or voice)</td></tr><tr><td>Video</td><td>Message contains video.</td></tr><tr><td>Static Image</td><td>Message contains static image(s).</td></tr><tr><td>Animation</td><td>Message contains an animation, i.e. a set of images presented like a slideshow. NOTE: If the message is also presented as text like for P1 Banners, also choose the Text category.</td></tr><tr><td>Other, please describe</td><td>For instance: Message is recalled or imagined rather than shown.</td></tr></tbody></table>"
+                },
+                {
+                    "type": "checkbox",
+                    "name": "modality_flag",
+                    "title": "Flag for discussion with group?",
+                    "hasOther": true,
+                    "otherText": "Yes"
+                },
+                {
+                    "type": "checkbox",
+                    "name": "imagery_type",
+                    "visibleIf": "{modality} anyof [\"video\",\"static_image\",\"animation\"]",
+                    "title": "IMAGERY TYPE",
+                    "isRequired": true,
+                    "choices": [
+                        {
+                            "value": "cartoon",
+                            "text": "Cartoon"
+                        },
+                        {
+                            "value": "realistic",
+                            "text": "Realistic"
+                        }
+                    ],
+                    "popupdescription": "<table><thead><th>Value</th><th>Description</th></thead><tbody><tr><td>Cartoon</td><td>Does the image/video contain a drawing, cartoon or otherwise unrealistic image?</td></tr><tr><td>Realistic</td><td>Does the image/video contain a realistic/photographic/videographic image?</td></tr></tbody></table>"
+                },
+                {
+                    "type": "checkbox",
+                    "name": "imagery_type_flag",
+                    "visibleIf": "{modality} anyof [\"video\",\"static_image\",\"animation\"]",
+                    "title": "Flag for discussion with group?",
+                    "hasOther": true,
+                    "otherText": "Yes"
+                }
+            ]
+        },
+        {
+            "name": "Domain",
+            "elements": [
+                {
+                    "type": "radiogroup",
+                    "name": "main_behavioral_domain",
+                    "title": "MAIN BEHAVIORAL DOMAIN",
+                    "isRequired": true,
+                    "hasOther": true,
+                    "choices": [
+                        {
+                            "value": "health",
+                            "text": "Health"
+                        },
+                        {
+                            "value": "marketing",
+                            "text": "Marketing"
+                        }
+                    ],
+                    "popupdescription": "<table><thead><th>Value</th><th>Description</th></thead><tbody><tr><td>Health</td><td>The message is about a health domain.</td></tr><tr><td>Marketing</td><td>The message is about marketing domain.</td></tr><tr><td>Other</td><td>Please describe</td></tr></tbody></table>"
+                },
+                {
+                    "type": "checkbox",
+                    "name": "main_domain_flag",
+                    "title": "Flag for discussion with group?",
+                    "hasOther": true,
+                    "otherText": "Yes"
+                },
+                {
+                    "type": "checkbox",
+                    "name": "health_domain",
+                    "visibleIf": "{main_behavioral_domain} = \"health\"",
+                    "title": "HEALTH DOMAIN",
+                    "isRequired": true,
+                    "hasOther": true,
+                    "choices": [
+                        {
+                            "value": "smoking",
+                            "text": "Smoking"
+                        },
+                        {
+                            "value": "physical_activity",
+                            "text": "Physical activity"
+                        },
+                        {
+                            "value": "alcohol",
+                            "text": "Alcohol"
+                        }
+                    ],
+                    "otherText": "Other (please describe)",
+                    "popupdescription": "<table><thead><th>Value</th><th>Description</th></thead><tbody><tr><td>Smoking</td><td>A main topic of the message concerns smokers or smoking.</td></tr><tr><td>Physical Activity</td><td>A main topic of the message concerns physical activity.</td></tr><tr><td>Alcohol</td><td>A main topic of the message concerns alcohol or alcohol consumption.</td></tr><tr><td>Other</td><td>Please describe</td></tr></tbody></table>"
+                },
+                {
+                    "type": "checkbox",
+                    "name": "health_domain_flag",
+                    "visibleIf": "{main_behavioral_domain} = \"health\"",
+                    "title": "Flag for discussion with group?",
+                    "hasOther": true,
+                    "otherText": "Yes"
+                },
+                {
+                    "type": "checkbox",
+                    "name": "non_health_domain",
+                    "visibleIf": "{main_behavioral_domain} = \"marketing\" or {main_behavioral_domain} = \"other\"",
+                    "title": "NON-HEALTH DOMAIN",
+                    "isRequired": true,
+                    "hasOther": true,
+                    "choices": [
+                        {
+                            "value": "donation",
+                            "text": "Donation"
+                        },
+                        {
+                            "value": "product",
+                            "text": "Product"
+                        }
+                    ],
+                    "popupdescription": "<table><thead><th>Value</th><th>Description</th></thead><tbody><tr><td>Donation</td><td>A main topic of the message concerns donations or charitable causes.</td></tr><tr><td>Product</td><td>A main topic of the message concerns purchases or commercial products.</td></tr><tr><td>Other</td><td>Please describe</td></tr></tbody></table>"
+                },
+                {
+                    "type": "checkbox",
+                    "name": "non_health_domain_flag",
+                    "visibleIf": "{main_behavioral_domain} = \"marketing\" or {main_behavioral_domain} = \"other\"",
+                    "title": "Flag for discussion with group?",
+                    "hasOther": true,
+                    "otherText": "Yes"
+                }
+            ]
+        },
+        {
+            "name": "message_persuasive_intent",
+            "elements": [
+                {
+                    "type": "radiogroup",
+                    "name": "persuasive_intent",
+                    "title": "PERSUASIVE INTENT",
+                    "isRequired": true,
+                    "choices": [
+                        {
+                            "value": "explicit",
+                            "text": "Clearly/explicitly persuasive"
+                        },
+                        {
+                            "value": "implicit",
+                            "text": "Implicitly persuasive"
+                        },
+                        {
+                            "value": "descriptive",
+                            "text": "Descriptive"
+                        }
+                    ],
+                    "popupdescription": "<table><thead><th>Value</th><th>Description</th></thead><tbody><tr><td>Clearly/explicitly persuasive</td><td>The message makes a clear, explicit recommendation regarding how to behave, think, or feel. That is, the message explicitly tells the reader to do something (\u201cCall the quit-line now.\u201d). Look for words such as \u201cyou should\u201d, \u201cdo X\u201d, \u201cpeople need to\u2026\u201d</td></tr><tr><td>Implicitly persuasive</td><td>The message does not make explicit recommendations but a best practice or way of thinking is implied. Example1: a newspaper article talks about positive experiences with running, but doesn\u2019t explicitly tell readers to run. Example2: a message talks about what others like or want, but doesn\u2019t explicitly tell the reader what to do (e.g. others like this app or article), i.e. social influence  Example3: a message exclusively talks about positive outcomes of a behavior, but does not explicitly tell the reader to do it. Example4: A message talks about how a particular behavior is easy to do AND doesn\u2019t imply it\u2019s a negative thing</td></tr><tr><td>Descriptive</td><td>The message makes no explicit or implicit recommendations. Example 1: A newspaper article talks about the introduction of a new law about snack food in public schools [i.e. focus is on a policy that isn\u2019t directly relevant to participant\u2019s behavior] Example 2: A message is two-sided, i.e. gives both positive and negative outcomes of a behavior or gives examples of positive outcomes but also expresses uncertainty about the evidence suggesting that these positive outcomes will occur.</td></tr></tbody></table>"
+                },
+                {
+                    "type": "checkbox",
+                    "name": "persuasive_intent_flag",
+                    "title": "Flag for discussion with group?",
+                    "hasOther": true,
+                    "otherText": "Yes"
+                }
+            ],
+            "title": "Persuasive Intent"
+        },
+        {
+            "name": "receiver",
+            "elements": [
+                {
+                    "type": "radiogroup",
+                    "name": "question2",
+                    "title": "Receiver",
+                    "choices": [
+                        {
+                            "value": "addressed",
+                            "text": "Directly addressed"
+                        },
+                        {
+                            "value": "not_addressed",
+                            "text": "Not directly addressed"
+                        }
+                    ]
+                }
+            ],
+            "title": "Receiver"
+        },
+        {
+            "name": "Outcomes",
+            "elements": [
+                {
+                    "type": "radiogroup",
+                    "name": "outcomes1",
+                    "title": "OUTCOMES",
+                    "isRequired": true,
+                    "choices": [
+                        {
+                            "value": "yes",
+                            "text": "Yes"
+                        },
+                        {
+                            "value": "no",
+                            "text": "No"
+                        }
+                    ]
+                },
+                {
+                    "type": "checkbox",
+                    "name": "outcomes_flag",
+                    "title": "Flag for discussion with group?",
+                    "hasOther": true,
+                    "otherText": "Yes"
+                },
+                {
+                    "type": "radiogroup",
+                    "name": "outcome_description",
+                    "visibleIf": "{outcomes1} = \"yes\"",
+                    "title": "OUTCOME DESCRIPTION",
+                    "choices": [
+                        {
+                            "value": "1",
+                            "text": "Explicit"
+                        },
+                        {
+                            "value": "2",
+                            "text": "Implicit"
+                        }
+                    ],
+                    "popupdescription": "<table><thead><th>Value</th><th>Description</th></thead><tbody><tr><td>Explicit</td><td>The outcome of following a recommendation or completing a given behavior is clearly and explicitly described in the message. NOTE: When in doubt- choose implicit.</td></tr><tr><td>Implicit</td><td>The outcome of following a recommendation or completing a given behavior is not clearly stated or implicitly implied in the message. Example: photo of a woman smiling with the phrase 'Stop smoking. Start living'</td></tr></tbody></table>"
+                },
+                {
+                    "type": "checkbox",
+                    "name": "outcome_description_flag",
+                    "visibleIf": "{outcomes1} = \"yes\"",
+                    "title": "Flag for discussion with group?",
+                    "hasOther": true,
+                    "otherText": "Yes"
+                },
+                {
+                    "type": "radiogroup",
+                    "name": "gain_loss",
+                    "visibleIf": "{outcomes1} = \"yes\"",
+                    "title": "Gain or Loss",
+                    "isRequired": true,
+                    "choices": [
+                        {
+                            "value": "gain",
+                            "text": "Gain"
+                        },
+                        {
+                            "value": "loss",
+                            "text": "Loss"
+                        },
+                        {
+                            "value": "unclear_mixed",
+                            "text": "Unclear or Mixed"
+                        }
+                    ],
+                    "popupdescription": "<table><thead><th>Value</th><th>Description</th></thead><tbody><tr><td>Gain</td><td>Message describes positive/desirable outcomes that can be gained by following a recommendation or by completing a given behavior (even if it is not explicitly recommended) Note: \u201cDesirable outcomes\u201d can be good things that will be gained OR bad things that can be avoided.</td></tr><tr><td>Loss</td><td>Message describes negative outcomes that would be suffered by not following a recommendation or by completing a given behavior (even if it is not explicitly recommended) Note: \u201cNegative outcomes\u201d can be negative things that will be suffered OR good things that one will miss out on.</td></tr><tr><td>Loss: Suffer negative outcomes</td><td>Message describes negative/undesirable outcomes that would be suffered by not following a recommendation or by completing a given behavior (even if it is not explicitly recommended) OR Message describes positive outcomes that would be lost by not following a recommendation or completing a given behavior (even if it is not explicitly recommended). Example: a photo of suffering man lying in a hospital bed with the phrase \u201cStop smoking. Start living\u201d. Focus on the most prominent outcome if the message describes multiple outcomes whose valences are mixed.</td></tr><tr><td>Unclear OR Both</td><td>Message describes a recommendation or behavior but the desirability of outcomes is indeterminate. Also choose this option if a mix of gain and loss-framed statements is included in the message.</td></tr></tbody></table>"
+                },
+                {
+                    "type": "checkbox",
+                    "name": "gain_loss_flag",
+                    "visibleIf": "{outcomes1} = \"yes\"",
+                    "title": "Flag for discussion with group?",
+                    "hasOther": true,
+                    "otherText": "Yes"
+                },
+                {
+                    "type": "radiogroup",
+                    "name": "gain_cats",
+                    "visibleIf": "{gain_loss} = 'gain'",
+                    "title": "Gain Categories",
+                    "choices": [
+                        {
+                            "value": "gain_positive",
+                            "text": "Gain positive outcomes"
+                        },
+                        {
+                            "value": "avoid_negative",
+                            "text": "Avoid negative outcomes"
+                        },
+                        {
+                            "value": "unclear_mixed",
+                            "text": "Unclear or Mixed"
+                        }
+                    ],
+                    "popupdescription": "<table><thead><th>Value</th><th>Description</th></thead><tbody><tr><td>gain positive outcomes</td><td>Message describes positive/desirable outcomes that can be gained by following a recommendation or by completing a given behavior (even if it is not explicitly recommended)</td></tr><tr><td>avoid negative outcomes</td><td>Message describes negative/undesirable outcomes that can be avoided by following a recommendation or by completing a given behavior (even if it is not explicitly recommended)</td></tr><tr><td>Unclear OR Both</td><td>The desirability of outcomes is unclear or a mix of positive and negative outcomes is mentioned.</td></tr></tbody></table>"
+                },
+                {
+                    "type": "checkbox",
+                    "name": "gain_cats_flag",
+                    "visibleIf": "{gain_loss} = 'gain'",
+                    "title": "Flag for discussion with group?",
+                    "hasOther": true,
+                    "otherText": "Yes"
+                },
+                {
+                    "type": "radiogroup",
+                    "name": "loss_cats",
+                    "visibleIf": "{gain_loss} = 'loss'",
+                    "title": "Loss Categories",
+                    "choices": [
+                        {
+                            "value": "loose_positive",
+                            "text": "Loose positive outcomes"
+                        },
+                        {
+                            "value": "suffer_negative",
+                            "text": "Suffer negative outcomes"
+                        },
+                        {
+                            "value": "unclear_mixed",
+                            "text": "Unclear or Mixed"
+                        }
+                    ],
+                    "popupdescription": "<table><thead><th>Value</th><th>Description</th></thead><tbody><tr><td>suffer negative outcomes</td><td>Message describes negative outcomes that would be suffered by not following a recommendation or by completing a given behavior (even if it is not explicitly recommended) Example: a photo of suffering man lying in a hospital bed with the phrase \u201cStop smoking. Start living</td></tr><tr><td>lose positive outcomes</td><td>Message describes positive outcomes that would be lost by not following a recommendation or completing a given behavior (even if it is not explicitly recommended)</td></tr><tr><td>Unclear OR Both</td><td>The desirability of outcomes is unclear or a mix of positive and negative outcomes is mentioned.</td></tr></tbody></table>"
+                },
+                {
+                    "type": "checkbox",
+                    "name": "loss_cats_flag",
+                    "visibleIf": "{gain_loss} = 'loss'",
+                    "title": "Flag for discussion with group?",
+                    "hasOther": true,
+                    "otherText": "Yes"
+                },
+                {
+                    "type": "checkbox",
+                    "name": "timing",
+                    "visibleIf": "{outcomes1} = \"yes\"",
+                    "title": "Timing",
+                    "choices": [
+                        {
+                            "value": "long",
+                            "text": "Long-term"
+                        },
+                        {
+                            "value": "short",
+                            "text": "Short-term"
+                        },
+                        {
+                            "value": "mixed_unclear",
+                            "text": "Mixed or Unclear"
+                        }
+                    ]
+                },
+                {
+                    "type": "checkbox",
+                    "name": "timing_flag",
+                    "visibleIf": "{outcomes1} = \"yes\"",
+                    "title": "Flag for discussion with group?",
+                    "enableIf": "{outcomes1} = \"yes\"",
+                    "hasOther": true,
+                    "otherText": "Yes"
+                },
+                {
+                    "type": "checkbox",
+                    "name": "question1",
+                    "visibleIf": "{main_behavioral_domain} = \"health\" and {outcomes1} = \"yes\"",
+                    "title": "APPEAL TYPE",
+                    "isRequired": true,
+                    "hasOther": true,
+                    "choices": [
+                        {
+                            "value": "physical",
+                            "text": "Physical outcomes"
+                        },
+                        {
+                            "value": "mental",
+                            "text": "Mental outcomes"
+                        },
+                        {
+                            "value": "social",
+                            "text": "Social outcomes"
+                        }
+                    ],
+                    "otherText": "Other OR Mixed (describe)"
+                },
+                {
+                    "type": "checkbox",
+                    "name": "appeal_type_flag",
+                    "visibleIf": "{main_behavioral_domain} = \"health\" and {outcomes1} = \"yes\"",
+                    "title": "Flag for discussion with group?",
+                    "enableIf": "{outcomes1} = \"yes\"",
+                    "hasOther": true,
+                    "otherText": "Yes"
+                }
+            ]
+        },
+        {
+            "name": "Social",
+            "elements": [
+                {
+                    "type": "radiogroup",
+                    "name": "social_content",
+                    "title": "SOCIAL CONTENT",
+                    "isRequired": true,
+                    "choices": [
+                        {
+                            "value": "explicitE",
+                            "text": "Explicitly/Clearly Social"
+                        },
+                        {
+                            "value": "implicit",
+                            "text": "Implicitly/Somewhat Social"
+                        },
+                        {
+                            "value": "not_social",
+                            "text": "Not at all Social"
+                        }
+                    ],
+                    "popupdescription": "<table><thead><th>Value</th><th>Description</th></thead><tbody><tr><td>Explicitly/clearly social</td><td>The message explicitly discusses or shows social content, meaning that it: Shows or talks about multiple people AND At least 2 of these individuals interact (e.g. hugging, fighting, talking, one looking at the other disapprovingly). OR The message discusses other people IN RELATION TO the receiver of the message (e.g. your family wants you to live, your loved ones don\u2019t like that you do X, your behavior harms others).</td></tr><tr><td>Implicitly/somewhat social</td><td>The message displays or describes a social context, but doesn\u2019t describe interactions between people. Example 1: An image shows a group of people, but no one is interacting.  Example 2: A message describes a descriptive social norm (e.g. X% of people do X)</td></tr><tr><td>Not at all social</td><td>The content is neither explicitly nor implicitly social (i.e. neither of the above apply) Note: Most study results should be coded as not social (e.g. researchers found X, or in a study, people who drank coffee were\u2026.).</td></tr></tbody></table>"
+                },
+                {
+                    "type": "checkbox",
+                    "name": "social_content_flag",
+                    "title": "Flag for discussion with group?",
+                    "hasOther": true,
+                    "otherText": "Yes"
+                },
+                {
+                    "type": "radiogroup",
+                    "name": "social_relevance",
+                    "visibleIf": "{social_content} <> 'not_social'",
+                    "title": "SOCIAL RELEVANCE",
+                    "isRequired": true,
+                    "choices": [
+                        {
+                            "value": "relevant",
+                            "text": "Relevant"
+                        },
+                        {
+                            "value": "irrelevant",
+                            "text": "Irrelevant"
+                        }
+                    ],
+                    "popupdescription": "<table><thead><th>Value</th><th>Description</th></thead><tbody><tr><td>Relevant</td><td>Some or all of the social information given in the message is relevant to the main goal of the message. (e.g. if the message is an anti-smoking PSA, the social content is relevant to smoking). Note: Assume that the main goal of a newspaper article is to communicate information about the main topic of the article. E.g. if an article is about healthy recipes and two people are talking to each other about cooking, that would be a relevant interaction.</td></tr><tr><td>Irrelevant</td><td>None of the social information given in the message is relevant to the main goal of the message Note: assume that the main goal of a movie trailer is to get people to go to the movies. Most interactions between movie characters will not be directly relevant to that.</td></tr></tbody></table>"
+                },
+                {
+                    "type": "checkbox",
+                    "name": "social_relevance_flag",
+                    "visibleIf": "{social_content} <> 'not_social'",
+                    "title": "Flag for discussion with group?",
+                    "hasOther": true,
+                    "otherText": "Yes"
+                }
+            ]
+        },
+        {
+            "name": "Narrative",
+            "elements": [
+                {
+                    "type": "radiogroup",
+                    "name": "narrative1",
+                    "title": "NARRATIVE CONTENT",
+                    "isRequired": true,
+                    "choices": [
+                        {
+                            "value": "narrative",
+                            "text": "Narrative"
+                        },
+                        {
+                            "value": "no_narrative",
+                            "text": "No narrative"
+                        }
+                    ]
+                },
+                {
+                    "type": "checkbox",
+                    "name": "narrative_flag",
+                    "title": "Flag for discussion with group?",
+                    "hasOther": true,
+                    "otherText": "Yes"
+                },
+                {
+                    "type": "radiogroup",
+                    "name": "testimonial",
+                    "visibleIf": "{narrative1} = \"narrative\"",
+                    "title": "TESTIMONIAL",
+                    "isRequired": true,
+                    "choices": [
+                        {
+                            "value": "item1",
+                            "text": "Testimonial"
+                        },
+                        {
+                            "value": "item2",
+                            "text": "No testimonial"
+                        }
+                    ],
+                    "popupdescription": "<table><thead><th>Value</th><th>Description</th></thead><tbody><tr><td>Testimonial</td><td>The narrative describes a real person.</td></tr><tr><td>No testimonial</td><td>The narrative describes a fictional person or character.</td></tr></tbody></table>"
+                },
+                {
+                    "type": "checkbox",
+                    "name": "testimonial_flag",
+                    "visibleIf": "{narrative1} = \"narrative\"",
+                    "title": "Flag for discussion with group?",
+                    "hasOther": true,
+                    "otherText": "Yes"
+                }
+            ]
+        },
+        {
+            "name": "Norms",
+            "elements": [
+                {
+                    "type": "checkbox",
+                    "name": "norms1",
+                    "title": "NORMS",
+                    "isRequired": true,
+                    "choices": [
+                        {
+                            "value": "descriptive",
+                            "text": "Descriptive norm"
+                        },
+                        {
+                            "value": "injunctive",
+                            "text": "Injunctive norm"
+                        },
+                        {
+                            "value": "N/A",
+                            "text": "No norm"
+                        }
+                    ]
+                },
+                {
+                    "type": "checkbox",
+                    "name": "norms_flag",
+                    "title": "Flag for discussion with group?",
+                    "hasOther": true,
+                    "otherText": "Yes"
+                }
+            ],
+            "visibleIf": "{social_content} <> 'not_social'"
+        }
+    ],
+    "showCompletedPage": false,
+    "showQuestionNumbers": "off",
+    "showProgressBar": "top",
+    "clearInvisibleValues": "onHidden"
+}

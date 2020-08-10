@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+      
+     
+    <style>
+        #stim { background-color: #f0f0f0; 
+            width: 600px; padding: 40px; margin: 20px;}
+        #stim img { width: 500px}
+
+        #stim figcaption { width: 400px; padding-left: 50px; text-align: center;}
+
+        .variable_desc { font-size: 10pt;}
+        
+.btn-group-xs > .btn, .btn-xs {
+    padding  : .40rem .4rem;
+    font-size  : .875rem;
+    line-height  : .5;
+    border-radius : .2rem;
+}
+        
+        #questionDescriptionText tbody tr td:first-of-type {
+            font-weight: bold; font-family: courier; width: 20%;
+        }
+        
+        
+    </style> 
+      
+      
+    <title>Megameta Content Analysis</title>
+  </head>
+  <body>
+
+      <div class="container">
+          
+          <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+              <a class="navbar-brand" href="#"><h3>Megameta Content Analysis Coder</h3></a>
+              
+              <ul class="navbar-nav ml-auto">
+                  {% if user.role == "admin" %}
+                  <li><a class="nav-item nav-link " href="/admin">Admin</a></li>
+                  {% endif %}
+                  <li><a class="nav-item nav-link " href="/">My home</a></li>
+                  <li><a class="nav-item nav-link " href="/logout">Logout</a></li>
+              </ul>
+          </nav>
+          
+         <div class="row"> 
+        <div class="col-sm">
+            <div>
+                {{ stim_html|safe }}
+            </div>
+            <div class="col-sm4">
+                <!-- HELP TEXT -->
+            </div>
+        </div>  
+        <div class="col-sm">      
+            <!-- SURVEY -->
+            
+             <!-- Modal -->
+        <div id="questionDescriptionPopup" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 id="modal-title" class="modal-title">Modal Header</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            <div id="questionDescriptionText" class="table table-striped table-sm small"></div>
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+            
+            
+            
+            <div id="surveyContainer"></div>
+        </div>
+       
+      </div>
+
+      
+      
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+          
+          <script src="https://surveyjs.azureedge.net/1.5.10/survey.jquery.min.js"></script>     
+          
+          
+          <script>
+              Survey.StylesManager.applyTheme("bootstrap");
+
+Survey.defaultBootstrapCss.navigationButton = "btn btn-green";
+
+//Add a property a text property into all questions types and into page
+Survey
+    .Serializer
+    .addProperty("question", "popupdescription:text");
+
+Survey
+    .Serializer
+    .addProperty("page", "popupdescription:text");
+function showDescription(element) {
+    document
+        .getElementById("questionDescriptionText")
+        .innerHTML = element.popupdescription;
+    
+    document
+        .getElementById('modal-title')
+        .innerHTML = element.title;
+    
+    $("#questionDescriptionPopup").modal();
+}
+              
+              
+              
+              
+              
+var surveyJSON;
+var sdata;
+              
+ $.ajax({
+        url: "/survey_json",
+        type: "GET",
+        dataType: "json",
+        async: false,
+        success: function (data) {
+            console.log(data);
+            surveyJSON=data;
+        }
+    });
+              
+  $.ajax({
+        url: "/codes/{{stim_id}}?uid={{ user.username }}",
+        type: "GET",
+        dataType: "json",
+        async: false,
+        success: function (data) {
+            console.log(data);
+            sdata=data;
+        }
+    });
+                   
+              
+              
+    function sendDataToServer(survey) {
+        //send Ajax request to your web server.
+        console.log('sendData: ' + survey)
+       $.ajax({
+            url: "/codes/{{ stim_id }}?uid={{ user.username }}",
+            type: "POST",
+            async: false,
+            data: JSON.stringify(survey.data),
+            dataType: "json",
+            processData: false,
+            contentType: "application/json; charset=UTF-8",
+            success: function (resp) {
+                console.log(resp);
+                if ('{{ next }}'!=0) {
+                    
+                    next_list = '{{ next }}'.split(',');
+                
+                    if (next_list.length>1) {
+                        next_str = '?next=' + next_list.slice(1).join(',');
+                    } else {
+                        next_str='';
+                    }
+                
+                    next_url = '/codestim/'+ next_list[0] + next_str;
+                    
+                    $(location).attr('href', next_url);
+                } else {
+                   $(location).attr('href', '/');
+                }
+            }
+        });     
+        
+        
+    }
+          
+
+    var survey = new Survey.Model(surveyJSON);
+        
+    survey.data = sdata.data;
+    $("#surveyContainer").Survey({
+        model: survey,
+        onComplete: sendDataToServer
+    });             
+              
+              // popup methods
+              
+              survey
+    .onAfterRenderQuestion
+    .add(function (survey, options) {
+        //Return if there is no description to show in popup
+        if (!options.question.popupdescription) 
+            return;
+        
+        //Add a button;
+        var btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "btn btn-info btn-xs";
+        btn.innerHTML = "More Info";
+        var question = options.question;
+        btn.onclick = function () {
+            showDescription(question);
+        }
+        var header = options
+            .htmlElement
+            .querySelector("h5");
+        var span = document.createElement("span");
+        span.innerHTML = "  ";
+        header.appendChild(span);
+        header.appendChild(btn);
+    });
+
+survey
+    .onAfterRenderPage
+    .add(function (survey, options) {
+        //Return if there is no description to show in popup
+        if (!options.page.popupdescription) 
+            return;
+        
+        //Add a button;
+        var btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "btn btn-info btn-xs";
+        btn.innerHTML = "More Info";
+        btn.onclick = function () {
+            showDescription(survey.currentPage);
+        }
+        var header = options
+            .htmlElement
+            .querySelector("h4");
+        var span = document.createElement("span");
+        span.innerHTML = "  ";
+        header.appendChild(span);
+        header.appendChild(btn);
+    });
+              
+              
+     $("#surveyContainer").Survey({model: survey});
+         
+              
+          </script>
+          
+          
+  </body>
+</html>
