@@ -41,5 +41,5 @@ Copyright (c) 2020 Communication Neuroscience Lab
 
 * With the requirements installed, it should run on an *nix based system with Python 3.7+ installed. It should also be possible to set it up on a Windows-based system.
 
-	* ![Linux-based installation instructions](doc/install.md)
+	* [Linux-based installation instructions](doc/install.md)
 
