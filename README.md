@@ -1,67 +1,45 @@
 # Megameta Content Analysis Coder
 
+### A web-based application for doing content analysis coding on text, image and video stimuli
 
-----
+Copyright (c) 2020 Communication Neuroscience Lab
 
-#### HISTORY
-
-* 2/24/20 mbod - initial setup instructions from moving to fmrisrv2 and completing first stage implem
-
-----
+----------
 
 
-## Setup
+## Overview
+
+
+* Lightweight user accounts and  authentication.
+
+![](doc/img/login.png)
+
+* User-based coding assignments and tracking
+
+![](doc/img/home1.png)
+
+* Configurable content survey and items using ![survey.js](https://surveyjs.io/Overview/Library)
+
+![](doc/img/coder1.png)
+
+![](doc/img/coder2.png)
+
+* Admin functions to track coding and export data
+
+![](doc/img/admin1.png)
+
+![](doc?img/admin2.png)
+
+
+
+## Setup & Installation
 
 * The coder is a Python based web app using Flask, Mongodb and Bootstrap
 
-### Installation
+* __N.B.__ We are currently refactoring the code and installation to create a Docker container version to ease installation and running issues.
 
-* __Mongodb__
-    * For linux VM follow: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/
-      1. Create a ``/etc/yum.repos.d/mongodb-org-4.2.repo` file so that you can install MongoDB directly using yum:      
-      ```
-          [mongodb-org-4.2]
-          name=MongoDB Repository
-          baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.2/x86_64/
-          gpgcheck=1
-          enabled=1
-          gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc    
-```
-     2. Install mongodb-org package:  
-        ```
-        sudo yum install -y mongodb-org
-        ```
-     3. Start mongodb service
-        ```
-        sudo systemctl start mongod.service
-        ```
-    
-* __Python virtual environment__
-    1. Create a new virtual env based on latest version of Python 
-```
-            cd server_rev
-            python3.7 -m venv env
-          
-    ```
-    2. Activate the environment source env/bin/activate
-```
-            source env/bin/activate
-            
-        ``` 
 
-    3. Install Python module requirememts
-       * Modules
-        - Flask 
-        - pymongo 
-        - pandas 
-        - flask_cors 
-        - flask-user 
-        - Flask-MongoEngine
-       * (will add a `requirements.txt`)
-       
-    4. Open firewall port for Flask server (default port is 5000)
-       ```
-       sudo firewall-cmd --zone=public --add-port=5000/tcp 
-       ```
+* With the requirements installed, it should run on an *nix based system with Python 3.7+ installed. It should also be possible to set it up on a Windows-based system.
 
-    
+	* ![Linux-based installation instructions](doc/install.md)
+
